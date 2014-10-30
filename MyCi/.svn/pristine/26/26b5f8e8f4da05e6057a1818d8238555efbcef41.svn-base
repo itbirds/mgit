@@ -1,0 +1,39 @@
+<?php 
+class Home extends CI_Controller{
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('picture_model');
+		$this->load->helper('url');
+	}
+	public function index()
+	{
+		$data['title'] = 'this is home page';
+		$data['stock_one'] = $this->picture_model->get_contents(1207);
+		$data['stock_two'] = $this->picture_model->get_contents(1209);
+		$data['stock_all'] = $this->picture_model->get_contents();
+		$data['blog'] = '';
+		$data['financial'] = $this->picture_model->get_contents(1081);
+		$data['gold'] = $this->picture_model->get_contents(1710);
+		$data['foreign_currency'] = $this->picture_model->get_contents(1504,8);
+		$data['fund'] = $this->picture_model->get_contents(1484,8);
+		$data['futures_f'] = $this->picture_model->get_contents(1615,4);
+		$data['futures_t'] = $this->picture_model->get_contents(1921,4);
+		$data['estate_pic'] = $this->picture_model->get_contents(1127,1);
+		$data['estate'] = $this->picture_model->get_contents(2134,4);
+		$data['car_pic'] = $this->picture_model->get_contents(1137,1); 
+		$data['car'] = $this->picture_model->get_contents(1700,4);
+		$this->load->view('templates/header',$data);
+		$this->load->view('home/index',$data);
+		$this->load->view('templates/footer',$data);
+	}
+	public function login()
+	{
+		$this->load->view('home/login');
+	}
+	public function dologin()
+	{
+
+	}
+}
+?>

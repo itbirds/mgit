@@ -109,13 +109,15 @@ class Picture_model extends CI_Model{
 		return $query->result_array();
 	}
     //热门文章
-	public function get_hot_article($pid_arr,$num)
+	public function get_hot_article()
 	{
+		$arr = array(1,2,4,14);
 		$this->db->select('articleId,partId,title,intro,show,updatetime,status,image_url,source_url,recommend,hit');
 		$this->db->order_by('hit','desc');
-		$this->db->where_in('partId',$pid_arr);
-		$this->db->limit($num);
+		$this->db->where_in('partId',$arr);
+		$this->db->limit(10);
 		$query = $this->db->get('cnfol_content');
 		return $query->result_array();
 	}
+	
 }

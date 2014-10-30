@@ -14,10 +14,12 @@ class Picture extends CI_Controller{
 		$data['parts'] = $this->picture_model->get_part();
 		$data['title'] = 'parts';
 		//图说财经
-		//$url = 'http://shell.cnfol.com/3gcnfol/dynamic.php';//手工编辑块，动态类型
+		$url = 'http://shell.cnfol.com/3gcnfol/dynamic.php';//手工编辑块，动态类型
 		$id = 1164;
-		$record = '2';
-		$pic_data = $this->curl->GetById($id,$record);
+		$key = md5('ZHP@Q3Al!s9Ca9x'.$id); 
+		$parm = array('id'=>$id,'apikey'=>$key,'start'=>0,'record'=>'2','order'=>'','len'=>'');
+		$json_data = $this->curl->get($url,$parm);
+		$pic_data = json_decode($json_data,true);
 		foreach ($pic_data as $key => $value) {
 			if(!isset($value['src'])){
 				unset($pic_data[$key]);
@@ -82,13 +84,11 @@ class Picture extends CI_Controller{
 	public function articles($id,$pid)
 	{
 	    $this->load->helper('url');
-	    $pid_arr = array(1,2,4,14);
-	    $num = 10;
 	    $data['title'] = 'this is articles';
 	    $data['one'] = $this->picture_model->get_onepic($id);
 	    $data['pics'] = $this->picture_model->get_pic($id,0);
 	    $data['recommend'] = $this->picture_model->get_recommed($pid);
-	    $data['hot_article'] = $this->picture_model->get_hot_article($pid_arr,$num);
+	    $data['hot_article'] = $this->picture_model->get_hot_article();
 	    $this->load->view('templates/header',$data);
 	    $this->load->view('picture/articles',$data);
 	    $this->load->view('templates/footer',$data);
