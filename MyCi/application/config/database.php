@@ -71,13 +71,13 @@ $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
 //cnfolCMS
-$db['cnfolCMS']['hostname'] = '172.20.1.154';
-$db['cnfolCMS']['username'] = 'dbuser_lvhq';
-$db['cnfolCMS']['password'] = 'ubVUoYAziq%NaZU1';
+//$db['cnfolCMS']['hostname'] = '172.20.1.154';
+//$db['cnfolCMS']['username'] = 'dbuser_lvhq';
+//$db['cnfolCMS']['password'] = 'ubVUoYAziq%NaZU1';
 
-// $db['cnfolCMS']['hostname'] = '119.57.113.31';
-// $db['cnfolCMS']['username'] = 'cnfol';
-// $db['cnfolCMS']['password'] = '123456';
+ $db['cnfolCMS']['hostname'] = '119.57.113.31';
+ $db['cnfolCMS']['username'] = 'cnfol';
+ $db['cnfolCMS']['password'] = '123456';
 $db['cnfolCMS']['database'] = 'cnfolCMS';
 $db['cnfolCMS']['dbdriver'] = 'mysql';
 $db['cnfolCMS']['dbprefix'] = '';
